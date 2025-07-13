@@ -19,19 +19,19 @@ import products from "@/utils/data/products";
 const BannerImages: BannerImages[] = [
   {
     name: "Leather Wallet",
-    image: "/assets/images/craftedwallet.jpg",
+    image: "/assets/herosection/belts_wallet.jpg",
   },
   {
     name: "Handcrafted Belt",
-    image: "/assets/images/craftedbelts.jpg",
+    image: "/assets/herosection/belts.jpg",
   },
   {
     name: "Leather Watch Strap",
-    image: "/assets/images/craftedwatchstrips.jpg",
+    image: "/assets/herosection/passport.jpg",
   },
   {
     name: "Leather Bag",
-    image: "/assets/images/craftedwallet.jpg",
+    image: "/assets/herosection/wallet.jpg",
   },
   {
     name: "Laptop Sleeve",
@@ -49,26 +49,24 @@ const BannerImages: BannerImages[] = [
 
 const categories: Category[] = [
   { name: "Belts", image: "/assets/images/belts.jpg" },
-  {
-    name: "Watches",
-    image: "/assets/images/watches.jpg",
-  },
+
   {
     name: "Wallets",
     image: "/assets/images/wallets.jpg",
   },
   { name: "Bags", image: "/assets/images/bags.jpg" },
   {
-    name: "Laptop Sleeves",
+    name: "Clothes",
     image: "/assets/images/laptopsleeves.jpg",
+  },
+
+  {
+    name: "Watch Straps",
+    image: "/assets/images/customproducts.jpg",
   },
   {
     name: "Umbrellas",
     image: "/assets/images/umbrella.jpg",
-  },
-  {
-    name: "Custom Orders",
-    image: "/assets/images/customproducts.jpg",
   },
 ];
 
@@ -86,7 +84,7 @@ export default function HomePage() {
       {/* Promo banner */}
       <div className="bg-black text-white py-2 text-center">
         <p className="text-xs text-amber-600 md:text-base">
-          Free shipping from {formatCurrency(10000)}
+          Free shipping from {formatCurrency(20000)}
         </p>
       </div>
 
@@ -99,20 +97,20 @@ export default function HomePage() {
       <WhyChooseUsSection />
 
       {/* Custom order section */}
-      <section className="py-12 lg:py-36 2xl:py-52 bg-gradient-to-br from-amber-800 via-amber-700 to-amber-600 text-white relative overflow-hidden bg-[url('/assets/images/watches.jpg')] bg-cover bg-center bg-no-repeat">
+      <section className="py-20 md:py-36 2xl:py-52 bg-gradient-to-br from-amber-800 via-amber-700 to-amber-600 text-white relative overflow-hidden bg-[url('/assets/images/watches.jpg')] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 drop-shadow-lg font-neoteric tracking-wider cursor-default">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6 drop-shadow-lg font-neoteric tracking-wider cursor-default">
               Create Your Custom Piece
             </h2>
-            <p className="mb-8 text-lg md:text-xl text-amber-600 drop-shadow-md leading-relaxed cursor-default">
+            <p className="mb-8 md:text-xl text-amber-600 drop-shadow-md leading-relaxed cursor-default">
               Have a unique idea? Let's bring it to life together.
             </p>
             <Button
               variant="secondary"
               size="lg"
-              className="bg-white text-amber-800 hover:bg-amber-50 font-semibold px-8 py-3 rounded-none cursor-pointer"
+              className="bg-white hover:bg-amber-50 font-semibold px-8 py-3 rounded-none cursor-pointer"
             >
               Start Custom Order
             </Button>

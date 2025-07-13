@@ -1,4 +1,5 @@
 import type { Category } from "@/types";
+import Image from "next/image";
 
 interface CategoriesSectionProps {
   categories: Category[];
@@ -6,22 +7,28 @@ interface CategoriesSectionProps {
 
 export function CategoriesSection({ categories }: CategoriesSectionProps) {
   return (
-    <section className="py-12 ">
+    <section className="md:py-12 ">
       <div className="container mx-auto px-4 border-b pb-8 border-amber-600">
-        <h2 className="text-3xl font-bold mb-8 text-center text-amber-800 font-neoteric tracking-wider">
+        <h2 className="text-xl md:text-4xl font-extrabold font-neoteric tracking-wider text-center py-8 cursor-default">
           Our Categories
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        <div className="grid grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map((category, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="w-24 h-24 rounded-full border-2 border-amber-600 overflow-hidden mb-2">
-                <img
-                  src={category.image || "/placeholder.svg"}
+            <div
+              key={index}
+              className="flex gap-2 flex-col items-center group pb-2 cursor-default"
+            >
+              <div className="size-24 rounded-full border-2 border-amber-600 overflow-hidden mb-2 hover:scale-120 transition-transform duration-300 ease-in-out">
+                <Image
+                  src={category.image}
                   alt={category.name}
-                  className="w-full h-full aspect-square object-cover"
+                  width={96}
+                  height={96}
+                  priority
+                  className="w-full h-full aspect-square object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
                 />
               </div>
-              <h3 className="text-sm font-semibold text-center text-amber-900 font-neoteric tracking-wider">
+              <h3 className="text-sm font-semibold tracking-widest text-center group-hover:scale-120 font-neoteric transition-transform duration-300 ease-in-out">
                 {category.name}
               </h3>
             </div>

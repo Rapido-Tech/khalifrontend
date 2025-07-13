@@ -1,7 +1,7 @@
 export const products = [
   {
     _id: "1",
-    name: "Vintage Leather Messenger Bag",
+    name: "Passport Holder",
     price: 299.99,
     discount: 15,
     category: "Bags",
@@ -9,7 +9,7 @@ export const products = [
     colors: ["#3E2C1C", "#000", "#B5651D"],
     images: [
       { url: "/images/products/leather-messenger-bag.jpg", main: false },
-      { url: "/assets/images/watches.jpg", main: true },
+      { url: "/assets/herosection/passport_holder.jpg", main: true },
     ],
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.",

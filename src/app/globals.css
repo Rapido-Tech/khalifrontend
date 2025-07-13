@@ -124,4 +124,5 @@
 
 body {
   font-family: var(--font-candara);
+  @apply tracking-wider;
 }

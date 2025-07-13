@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ShoppingCart, Search, Menu, X, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -9,26 +9,42 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
+      const target = event.target as Node;
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(target) &&
+        toggleButtonRef.current &&
+        !toggleButtonRef.current.contains(target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  const handleCloseMenu = () => setIsMenuOpen(false);
+
   return (
-    <header className=" shadow-sm">
+    <header className="transition-all duration-300 ease-in-out shadow-sm">
       <div className="container mx-auto px-4 py-1">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden"
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
+        <div className="flex justify-between items-center flex-col md:flex-row">
+          {/* Logo and Hamburger */}
+          <div className="flex items-center justify-between space-x-4 w-full md:w-max">
             <Link href="/" className="text-2xl font-bold">
               <Image
                 src="/assets/khalidLogo.png"
@@ -37,46 +53,84 @@ export function Header() {
                 height={80}
               />
             </Link>
+            <Button
+              ref={toggleButtonRef}
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="lg:hidden"
+            >
+              {isMenuOpen ? (
+                <X className="size-10" />
+              ) : (
+                <Menu className="size-10" />
+              )}
+            </Button>
           </div>
+
+          {/* Navigation */}
           <nav
-            className={`lg:flex items-center space-x-8 ${
-              isMenuOpen
-                ? "block absolute top-16 left-0 right-0 bg-amber-800 p-4 z-50"
-                : "hidden"
-            } lg:relative lg:top-0 lg:bg-transparent lg:p-0`}
+            ref={menuRef}
+            className={`
+              lg:flex items-center space-x-8 w-full md:w-max overflow-hidden transition-all duration-300 ease-in-out
+              ${
+                isMenuOpen
+                  ? "max-h-96 opacity-100 translate-y-0 py-4"
+                  : "max-h-0 opacity-0 -translate-y-4 py-0"
+              }
+              lg:opacity-100 lg:translate-y-0 lg:max-h-none lg:py-0 lg:relative lg:top-0 lg:p-0 
+            `}
           >
-            <Link
-              href="/"
-              className="block py-2 hover:text-amber-200 text-lg font-bold"
-            >
-              HOME
-            </Link>
-            <Link
-              href="/shop"
-              className="block py-2 hover:text-amber-200 text-lg font-bold"
-            >
-              SHOP
-            </Link>
-            <Link
-              href="/about"
-              className="block py-2 hover:text-amber-200 text-lg font-bold"
-            >
-              ABOUT
-            </Link>
-            <Link
-              href="/about"
-              className="block py-2 hover:text-amber-200 text-lg font-bold"
-            >
-              GARALLEY
-            </Link>
-            <Link
-              href="/contact"
-              className="block py-2 hover:text-amber-200 text-lg font-bold"
-            >
-              CONTACT
-            </Link>
+            {[
+              { href: "/", label: "HOME" },
+              { href: "/shop", label: "SHOP" },
+              { href: "/about", label: "ABOUT" },
+              { href: "/about", label: "GALLERY" },
+              { href: "/contact", label: "CONTACT" },
+            ].map(({ href, label }) => (
+              <div className="hidden md:block" key={label}>
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={handleCloseMenu}
+                  className=" h-[28px] flex items-center text-black no-underline group"
+                >
+                  <span className="relative p-0 h-5 overflow-hidden">
+                    <div className="transition-transform duration-400 ease-in-out group-hover:-translate-y-[20px]">
+                      <span className="block text-lg leading-5 transition-transform duration-400 ease-in-out origin-[right_center] group-hover:rotate-[20deg]">
+                        {label}
+                      </span>
+                      <span className="block text-lg leading-5 transition-transform duration-400 ease-in-out origin-[left_center] rotate-[20deg] group-hover:rotate-0">
+                        {label}
+                      </span>
+                    </div>
+                  </span>
+                </Link>
+              </div>
+            ))}
+
+            {[
+              { href: "/", label: "HOME" },
+              { href: "/shop", label: "SHOP" },
+              { href: "/about", label: "ABOUT" },
+              { href: "/about", label: "GALLERY" },
+              { href: "/contact", label: "CONTACT" },
+            ].map(({ href, label }) => (
+              <div className="md:hidden " key={label}>
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={handleCloseMenu}
+                  className="group"
+                >
+                  <div className="py-2 text-lg">{label}</div>
+                </Link>
+              </div>
+            ))}
           </nav>
-          <div className="flex items-center space-x-4">
+
+          {/* Icons */}
+          <div className="md:flex items-center space-x-4 hidden">
             <Search className="h-5.5 w-5.5" />
             <User2 className="h-5.5 w-5.5" />
             <Link href="/cart" className="relative">

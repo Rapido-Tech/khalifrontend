@@ -52,16 +52,16 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
 
   return (
     <section>
-      <div className="container mx-auto px-4 border-b pb-8 border-amber-600">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-amber-900 font-neoteric">
+      <div className="container mx-auto px-4 border-b pb-10 border-amber-600">
+        <div className="flex items-center justify-between ">
+          <h2 className="text-xl md:text-4xl font-extrabold font-neoteric tracking-wider text-center py-8 cursor-default">
             Featured Products
           </h2>
 
           <Link href="/shop">
             <Button
               variant="outline"
-              className="border-amber-600 text-amber-600 hover:bg-amber-50 bg-transparent rounded-none"
+              className="border-amber-600 font-bold bg-amber-500 border text-white  rounded-none hover:border-amber-200  hover:bg-amber-600 cursor-pointer  md:!py-5 md:!px-10"
             >
               View All <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -74,7 +74,7 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
             variant="ghost"
             size="icon"
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black shadow-lg hover:bg-amber-600 border text-white hover:text-white rounded-none"
+            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-amber-500 shadow-lg hover:bg-amber-600 border text-white hover:text-white rounded-none"
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
@@ -82,7 +82,7 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
             variant="ghost"
             size="icon"
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black shadow-lg hover:bg-amber-600 border text-white hover:text-white rounded-none"
+            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-amber-500 shadow-lg hover:bg-amber-600 border text-white hover:text-white rounded-none"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
@@ -131,7 +131,7 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
                     </p>
                     <div className="flex flex-col gap-2">
                       <Button
-                        className="w-full bg-amber-600 hover:bg-amber-700 text-white rounded-none"
+                        className="border-amber-600 font-bold bg-amber-500 border text-white  rounded-none hover:border-amber-200  hover:bg-amber-600 cursor-pointer !py-5 !px-10"
                         onClick={() => handleAddToCart(product)}
                       >
                         <ShoppingCart className="mr-2 h-4 w-4" />

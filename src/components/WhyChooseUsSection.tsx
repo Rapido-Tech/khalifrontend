@@ -33,7 +33,7 @@ export function WhyChooseUsSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center text-amber-900 font-neoteric">
+        <h2 className="text-xl md:text-4xl font-extrabold font-neoteric tracking-wider text-center py-8 cursor-default">
           Why Choose Khalifa Crafted?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -42,7 +42,7 @@ export function WhyChooseUsSection() {
               <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors duration-300">
                 <feature.icon className="h-8 w-8 text-amber-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-amber-900 font-neoteric">
+              <h3 className="texl-lg md:text-xl  font-semibold mb-2 tracking-wider font-neoteric">
                 {feature.title}
               </h3>
               <p className="text-gray-600">{feature.description}</p>
