@@ -44,7 +44,8 @@ export function Header() {
       <div className="container mx-auto px-4 py-1">
         <div className="flex justify-between items-center flex-col md:flex-row">
           {/* Logo and Hamburger */}
-          <div className="flex items-center justify-between space-x-4 w-full md:w-max">
+
+          <div className="flex items-center justify-between space-x-5 w-full md:w-max">
             <Link href="/" className="text-2xl font-bold">
               <Image
                 src="/assets/khalidLogo.png"
