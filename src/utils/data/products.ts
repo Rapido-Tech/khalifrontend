@@ -144,8 +144,8 @@ import { Product } from "@/types";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-//const API_URL = "https://api.khalifacrafted.store/api/v1";
-const API_URL = "http://localhost:4000/api/v1/products";
+const API_URL = "https://api.khalifacrafted.store/api/v1";
+//const API_URL = "http://localhost:5000/api/v1/products";
 
 // Fetch function for sections with products
 export const fetchProducts = async (): Promise<Product[]> => {
