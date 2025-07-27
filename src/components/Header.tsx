@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 export function Header() {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -40,8 +41,14 @@ export function Header() {
   const handleCloseMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="transition-all duration-300 ease-in-out shadow-sm">
-      <div className="container mx-auto px-4 py-1">
+    <header className="transition-all duration-300 ease-in-out shadow-sm relative">
+      {/* Promo banner */}
+      <div className="bg-black text-white py-2 text-center">
+        <p className="text-xs text-amber-600 md:text-base">
+          Free shipping from {formatCurrency(20000)}
+        </p>
+      </div>
+      <div className="container mx-auto px-4 py-1 ">
         <div className="flex justify-between items-center flex-col md:flex-row">
           {/* Logo and Hamburger */}
 
@@ -98,10 +105,10 @@ export function Header() {
                 >
                   <span className="relative p-0 h-5 overflow-hidden">
                     <div className="transition-transform duration-400 ease-in-out group-hover:-translate-y-[20px]">
-                      <span className="block text-lg leading-5 transition-transform duration-400 ease-in-out origin-[right_center] group-hover:rotate-[20deg]">
+                      <span className="block text-lg font-bold leading-5 transition-transform duration-400 ease-in-out origin-[right_center] group-hover:rotate-[20deg]">
                         {label}
                       </span>
-                      <span className="block text-lg leading-5 transition-transform duration-400 ease-in-out origin-[left_center] rotate-[20deg] group-hover:rotate-0">
+                      <span className="block text-lg font-bold leading-5 transition-transform duration-400 ease-in-out origin-[left_center] rotate-[20deg] group-hover:rotate-0">
                         {label}
                       </span>
                     </div>

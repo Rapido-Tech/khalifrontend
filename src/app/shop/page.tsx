@@ -14,7 +14,6 @@ import {
 //import { useProducts } from "@/hooks/useProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
-import products from "@/utils/data/products";
 import { Card } from "@/components/ui/card";
 import categories from "@/utils/data/category";
 import { addItem } from "@/lib/features/cartSlice";
@@ -30,7 +29,7 @@ const Collection: React.FC = () => {
   );
 
   const [showFilter, setShowFilter] = useState(false);
-  const [filterProducts, setFilterProducts] = useState(products);
+  //const [filterProducts, setFilterProducts] = useState(products);
   const [category, setCategory] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState("name");
 
@@ -44,34 +43,31 @@ const Collection: React.FC = () => {
   };
 
   const applyFilter = () => {
-    let filtered = [...products];
-
-    if (showSearch && search) {
-      filtered = filtered.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    if (category.length > 0) {
-      filtered = filtered.filter((item) => category.includes(item.category));
-    }
-
-    setFilterProducts(filtered);
+    // let filtered = [...products];
+    // if (showSearch && search) {
+    //   filtered = filtered.filter((item) =>
+    //     item.name.toLowerCase().includes(search.toLowerCase())
+    //   );
+    // }
+    // if (category.length > 0) {
+    //   filtered = filtered.filter((item) => category.includes(item.category));
+    // }
+    // setFilterProducts(filtered);
   };
 
   const sortProduct = () => {
-    const sorted = [...filterProducts];
-    switch (sortBy) {
-      case "price-low":
-        setFilterProducts(sorted.sort((a, b) => a.price - b.price));
-        break;
-      case "price-high":
-        setFilterProducts(sorted.sort((a, b) => b.price - a.price));
-        break;
-      default:
-        applyFilter();
-        break;
-    }
+    // const sorted = [...filterProducts];
+    // switch (sortBy) {
+    //   case "price-low":
+    //     setFilterProducts(sorted.sort((a, b) => a.price - b.price));
+    //     break;
+    //   case "price-high":
+    //     setFilterProducts(sorted.sort((a, b) => b.price - a.price));
+    //     break;
+    //   default:
+    //     applyFilter();
+    //     break;
+    // }
   };
 
   const handleAddToCart = (product: Product) => {
@@ -84,7 +80,7 @@ const Collection: React.FC = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [category, search, showSearch, products]);
+  }, [category, search, showSearch]);
 
   useEffect(() => {
     sortProduct();
@@ -160,14 +156,14 @@ const Collection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 gap-y-6">
-          {filterProducts.map((item) => (
+          {/* {filterProducts.map((item) => (
             <Card
               key={item._id}
               className="overflow-hidden hover:shadow-lg rounded-none py-0 transition-shadow duration-300 border-amber-600"
             >
               <ListProductItem item={item} />
             </Card>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

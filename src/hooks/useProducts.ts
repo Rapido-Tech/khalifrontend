@@ -7,11 +7,11 @@ const fetcher = (url: string) =>
     return res.json();
   });
 
+//const API_URL = "https://api.khalifacrafted.store/api/v1";
+const API_URL = "http://localhost:4000/api/v1";
+
 export function useProducts() {
-  const { data, error, isLoading } = useSWR<Product[]>(
-    "/api/products",
-    fetcher
-  );
+  const { data, error, isLoading } = useSWR<Product[]>(`${API_URL}`, fetcher);
 
   return {
     products: data || [],

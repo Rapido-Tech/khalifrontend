@@ -13,7 +13,8 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import products from "@/utils/data/products";
+import { useSectionsWithProducts } from "@/utils/data/products";
+import MainCarousel from "@/components/HeroCarousel/MainCarousel";
 
 /* sample data … */
 const BannerImages: BannerImages[] = [
@@ -71,6 +72,8 @@ const categories: Category[] = [
 ];
 
 export default function HomePage() {
+  const { products, error, loading } = useSectionsWithProducts();
+
   return (
     <div className="min-h-screen ">
       <Head>
@@ -81,24 +84,62 @@ export default function HomePage() {
         />
       </Head>
 
-      {/* Promo banner */}
-      <div className="bg-black text-white py-2 text-center">
-        <p className="text-xs text-amber-600 md:text-base">
-          Free shipping from {formatCurrency(20000)}
-        </p>
-      </div>
+      {/* <HeroSection products={BannerImages} /> */}
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 overflow-hidden ">
+        <video
+          className=" h-[80vh] object-cover
+           z-10 aspect-video box-border"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/assets/videos/khalif01.mp4" type="video/mp4" />
+        </video>
+        <video
+          className=" h-[80vh] object-cover
+           z-10 aspect-video box-border"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/assets/videos/khalifa02.mp4" type="video/mp4" />
+        </video>{" "}
+        <video
+          className=" h-[80vh] object-cover
+           z-10 aspect-video box-border"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/assets/videos/khalifa03.mp4" type="video/mp4" />
+        </video>{" "}
+        <video
+          className=" h-[80vh] object-cover
+           z-10 aspect-video box-border"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/assets/videos/khalif01.mp4" type="video/mp4" />
+        </video>
+      </div> */}
 
-      <HeroSection products={BannerImages} />
+      <MainCarousel />
 
       <CategoriesSection categories={categories} />
 
-      <FeaturedProducts products={products} />
+      <FeaturedProducts products={products || []} />
 
       <WhyChooseUsSection />
 
       {/* Custom order section */}
       <section className="py-20 md:py-36 2xl:py-52 bg-gradient-to-br from-amber-800 via-amber-700 to-amber-600 text-white relative overflow-hidden bg-[url('/assets/images/watches.jpg')] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-black/70"></div>
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-4xl font-bold mb-6 drop-shadow-lg font-neoteric tracking-wider cursor-default">
@@ -117,8 +158,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <TestimonialsSection />
+      {/* 
+      <TestimonialsSection /> */}
 
       {/* Social links */}
       <section className="py-8 bg-gray-200">

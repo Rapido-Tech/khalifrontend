@@ -48,7 +48,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onNavButtonClick);
 
   return (
-    <section className="embla relative" dir="rtl">
+    <section className="embla relative">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container h-[30vh] lg:h-[85vh] 2xl:h-[90vh]">
           {slides.map((slide, index) => (
@@ -73,14 +73,24 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 Shop Now <ChevronRight className="ml-2 h-5 w-5 " />
               </Button> */}
               <div key={index} className="w-full h-full flex-shrink-0 relative">
-                <Image
+                {/* <Image
                   width={1000}
                   height={600}
                   src={slide.image || "/placeholder.svg"}
                   alt={slide.name}
                   priority
                   className="w-full h-full aspect-video object-cover bg-center"
-                />
+                /> */}
+                <video
+                  className="w-screen h-full object-cover
+           z-10 aspect-video box-border"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src="/assets/videos/khalif01.mp4" type="video/mp4" />
+                </video>
                 <div className="absolute inset-0 bg-black/50" />
               </div>
             </div>

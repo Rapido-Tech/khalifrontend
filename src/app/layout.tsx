@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Marcellus } from "next/font/google";
 import { candara, neoteric } from "@/styles/fonts";
 import "./globals.css";
 import "rc-slider/assets/index.css";
@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AppProvider } from "@/contexts/AppProvider";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +17,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const marcellus = Marcellus({
+  variable: "--font-marcellus",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -31,13 +38,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${candara.variable} ${neoteric.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${candara.variable} ${marcellus.variable} ${neoteric.variable} antialiased`}
       >
         <Suspense fallback={<div>Loading...</div>}>
           <AppProvider>
-            <Header />
-            {children}
-            <Footer />
+            <div className="relative">
+              <div className=" size-full top-0 left-0 z-20">
+                <Header />
+              </div>
+              <Providers>{children}</Providers>
+              <Footer />
+            </div>
           </AppProvider>
         </Suspense>
       </body>
