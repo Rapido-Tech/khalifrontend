@@ -21,11 +21,11 @@ const MainCarousel = () => {
   const BannerImages: BannerImages[] = [
     {
       name: "Leather Wallet",
-      image: "/assets/herosection/belts_wallet.jpg",
+      image: "/assets/images/belts_wallet.jpg",
     },
     {
       name: "Handcrafted Belt",
-      image: "/assets/herosection/belts.jpg",
+      image: "/assets/images/craftedwallet.jpg",
     },
 
     {
@@ -34,12 +34,12 @@ const MainCarousel = () => {
     },
     {
       name: "Leather Umbrella",
-      image: "/assets/images/craftedwallet.jpg",
+      image: "/assets/images/laptopsleeves.jpg",
     },
-    {
-      name: "Custom Piece",
-      image: "/assets/images/craftedbelts.jpg",
-    },
+    // {
+    //   name: "Custom Piece",
+    //   image: "/assets/images/craftedbelts.jpg",
+    // },
   ];
 
   return (
